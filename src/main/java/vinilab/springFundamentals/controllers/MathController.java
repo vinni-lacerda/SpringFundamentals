@@ -25,4 +25,10 @@ public class MathController {
         String number = strNumber.replace(",", ".");
         return (number.matches("[-+]?[0-9]*\\.?[0-9]+"));
     }
+    @RequestMapping("/subtract/{numberOne}/{numberTwo}")
+    public Double subtract(@PathVariable String numberOne, @PathVariable String numberTwo) throws Exception {
+        if(!IsNumeric(numberOne) || !IsNumeric(numberTwo))
+            throw new UnsupportedMathOperationException("Please set a numeric value");
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
 }
