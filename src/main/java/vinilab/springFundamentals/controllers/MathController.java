@@ -37,4 +37,10 @@ public class MathController {
             throw new UnsupportedMathOperationException("Please set a numeric value");
         return convertToDouble(numberOne) * convertToDouble(numberTwo);
     }
+    @RequestMapping("/divide/{numberOne}/{numberTwo}")
+    public Double divide(@PathVariable String numberOne, @PathVariable String numberTwo) throws Exception {
+        if(!IsNumeric(numberOne) || !IsNumeric(numberTwo))
+            throw new UnsupportedMathOperationException("Please set a numeric value");
+        return convertToDouble(numberOne) / convertToDouble(numberTwo);
+    }
 }
