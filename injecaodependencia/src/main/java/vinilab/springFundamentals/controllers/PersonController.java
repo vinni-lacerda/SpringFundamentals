@@ -29,4 +29,13 @@ public class PersonController {
     public Person create(@RequestBody Person person){
         return personServices.create(person);
     }
+    @PutMapping
+    public Person update(@RequestBody Person person){
+        return personServices.update(person);
+    }
+
+    @DeleteMapping
+    public void deleteById(@PathVariable("id") String id){
+        personServices.delete(id);
+    }
 }

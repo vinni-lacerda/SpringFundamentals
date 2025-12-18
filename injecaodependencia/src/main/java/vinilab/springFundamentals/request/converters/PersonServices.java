@@ -1,5 +1,6 @@
 package vinilab.springFundamentals.request.converters;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import vinilab.springFundamentals.model.Person;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
+@Slf4j
 @Service
 public class PersonServices {
     private final AtomicLong counter = new AtomicLong();
@@ -47,5 +49,12 @@ public class PersonServices {
     public Person create(Person person){
         logger.info("Creating one person");
         return person;
+    }
+    public Person update(Person person){
+        logger.info("updating one person!");
+        return person;
+    }
+    public void delete(String id){
+        logger.info("Deleting one person");
     }
 }
