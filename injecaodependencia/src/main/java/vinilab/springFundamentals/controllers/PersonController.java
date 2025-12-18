@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import vinilab.springFundamentals.model.Person;
-import vinilab.springFundamentals.request.converters.PersonServices;
+import vinilab.springFundamentals.services.PersonServices;
 
 import java.util.List;
 
