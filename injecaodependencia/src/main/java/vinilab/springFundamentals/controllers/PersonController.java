@@ -27,4 +27,9 @@ public class PersonController {
     public Person findById(@PathVariable("id") String id){
         return personServices.findById(id);
     }
+
+
+    public Person create(@PathVariable("id") String id, Person person){
+        return personServices.create(person);
+    }
 }
