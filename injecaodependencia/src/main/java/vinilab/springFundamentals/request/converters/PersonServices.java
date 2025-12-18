@@ -1,8 +1,6 @@
 package vinilab.springFundamentals.request.converters;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import vinilab.springFundamentals.model.Person;
 
 import java.util.ArrayList;

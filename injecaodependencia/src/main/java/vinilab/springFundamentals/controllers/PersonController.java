@@ -26,7 +26,7 @@ public class PersonController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@PathVariable("id") String id, Person person){
+    public Person create(@RequestBody Person person){
         return personServices.create(person);
     }
 }
