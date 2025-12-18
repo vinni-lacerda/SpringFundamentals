@@ -8,7 +8,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import vinilab.springFundamentals.exception.ExceptionResponse;
 import vinilab.springFundamentals.exception.ResourceNotFoundException;
-import vinilab.springFundamentals.exception.UnsupportedMathOperationException;
 
 import java.util.Date;
 
