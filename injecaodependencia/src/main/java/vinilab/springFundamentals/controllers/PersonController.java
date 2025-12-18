@@ -2,10 +2,7 @@ package vinilab.springFundamentals.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.request.converters.PersonServices;
 
@@ -28,7 +25,7 @@ public class PersonController {
         return personServices.findById(id);
     }
 
-
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Person create(@PathVariable("id") String id, Person person){
         return personServices.create(person);
     }
