@@ -41,7 +41,7 @@ public class PersonServices {
         Person entity = personRepository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("Updating a person"));
         entity.setFirstName(person.getFirstName());
         entity.setLastName(person.getLastName());
-        entity.setAdress(person.getAdress());
+        entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
         return personRepository.save(entity);
