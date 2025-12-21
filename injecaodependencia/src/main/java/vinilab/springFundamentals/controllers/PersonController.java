@@ -2,6 +2,7 @@ package vinilab.springFundamentals.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.services.PersonServices;
@@ -15,12 +16,12 @@ public class PersonController {
     @Autowired
     private PersonServices personServices;
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Person> findAll(){
         return personServices.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person findById(@PathVariable("id") Long id){
         return personServices.findById(id);
     }
@@ -35,7 +36,8 @@ public class PersonController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteById(@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
         personServices.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
