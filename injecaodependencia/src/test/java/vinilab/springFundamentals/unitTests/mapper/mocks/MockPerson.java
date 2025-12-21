@@ -1,4 +1,4 @@
-package vinilab.springFundamentals.unitTests.mapper;
+package vinilab.springFundamentals.unitTests.mapper.mocks;
 
 import vinilab.springFundamentals.dto.PersonDTO;
 import vinilab.springFundamentals.model.Person;
