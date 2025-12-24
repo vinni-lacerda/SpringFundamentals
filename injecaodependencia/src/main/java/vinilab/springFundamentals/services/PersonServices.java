@@ -3,6 +3,7 @@ package vinilab.springFundamentals.services;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vinilab.springFundamentals.dto.PersonDTO;
 import vinilab.springFundamentals.exception.ResourceNotFoundException;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.repositories.PersonRepository;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
+import static vinilab.springFundamentals.mapper.ObjectMapper.parseObjects;
+import static vinilab.springFundamentals.mapper.ObjectMapper.parseObject;
 
 
 @Service
@@ -18,25 +21,26 @@ public class PersonServices {
 
     private final AtomicLong counter = new AtomicLong();
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
-
     @Autowired
     PersonRepository personRepository;
 
-    public Person findById(Long id){
+    public PersonDTO findById(Long id){
         logger.info("Finding one Person!");
-        return personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this id"));
+        Person entity = personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this id"));
+        return parseObject(entity, PersonDTO.class);
     }
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         logger.info(("Finding all people!"));
-        return personRepository.findAll();
+        return parseObjects(personRepository.findAll(), PersonDTO.class);
     }
 
 
-    public Person create(Person person){
+    public PersonDTO create(PersonDTO person){
         logger.info("Creating one person");
-        return personRepository.save(person);
+        Person entity = parseObject(person, Person.class);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
-    public Person update(Person person){
+    public PersonDTO update(PersonDTO person){
         logger.info("updating one person!");
         Person entity = personRepository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("Updating a person"));
         entity.setFirstName(person.getFirstName());
@@ -44,7 +48,7 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        return personRepository.save(entity);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
     public void delete(Long id){
         logger.info("Deleting one person");
