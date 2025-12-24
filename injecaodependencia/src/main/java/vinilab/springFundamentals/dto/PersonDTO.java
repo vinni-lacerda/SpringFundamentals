@@ -19,18 +19,18 @@ public class PersonDTO implements Serializable {
     @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
     @Column(nullable = false, length = 100)
-    private String adress;
+    private String address;
     @Column(nullable = false, length = 6)
     private String gender;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(Long id, String firstName, String lastName, String adress, String gender) {
+    public PersonDTO(Long id, String firstName, String lastName, String address, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.adress = adress;
+        this.address = address;
         this.gender = gender;
     }
 
@@ -59,11 +59,11 @@ public class PersonDTO implements Serializable {
     }
 
     public String getAddress() {
-        return adress;
+        return address;
     }
 
     public void setAddress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getGender() {
@@ -77,11 +77,11 @@ public class PersonDTO implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof PersonDTO person)) return false;
-        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(adress, person.adress) && Objects.equals(gender, person.gender);
+        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, adress, gender);
+        return Objects.hash(id, firstName, lastName, address, gender);
     }
 }
