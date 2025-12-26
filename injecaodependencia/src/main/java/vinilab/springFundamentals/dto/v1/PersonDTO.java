@@ -1,4 +1,4 @@
-package vinilab.springFundamentals.dto;
+package vinilab.springFundamentals.dto.v1;
 
 import jakarta.persistence.*;
 
