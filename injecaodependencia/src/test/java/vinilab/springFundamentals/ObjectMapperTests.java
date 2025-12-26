@@ -2,7 +2,7 @@ package vinilab.springFundamentals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import vinilab.springFundamentals.dto.PersonDTO;
+import vinilab.springFundamentals.dto.v1.PersonDTO;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.unitTests.mapper.mocks.MockPerson;
 

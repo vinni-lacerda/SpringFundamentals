@@ -1,6 +1,6 @@
 package vinilab.springFundamentals.unitTests.mapper.mocks;
 
-import vinilab.springFundamentals.dto.PersonDTO;
+import vinilab.springFundamentals.dto.v1.PersonDTO;
 import vinilab.springFundamentals.model.Person;
 
 import java.util.ArrayList;
