@@ -1,14 +1,13 @@
 package vinilab.springFundamentals.services;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vinilab.springFundamentals.dto.PersonDTO;
+import vinilab.springFundamentals.dto.v1.PersonDTO;
+import vinilab.springFundamentals.dto.v2.PersonDTOV2;
 import vinilab.springFundamentals.exception.ResourceNotFoundException;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.repositories.PersonRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
@@ -36,6 +35,11 @@ public class PersonServices {
 
 
     public PersonDTO create(PersonDTO person){
+        logger.info("Creating one person");
+        Person entity = parseObject(person, Person.class);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
+    }
+    public PersonDTOV2 createV2(PersonDTOV2 person){
         logger.info("Creating one person");
         Person entity = parseObject(person, Person.class);
         return parseObject(personRepository.save(entity), PersonDTO.class);
