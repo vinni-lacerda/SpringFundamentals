@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import vinilab.springFundamentals.dto.v1.PersonDTO;
 import vinilab.springFundamentals.dto.v2.PersonDTOV2;
 import vinilab.springFundamentals.exception.ResourceNotFoundException;
+import vinilab.springFundamentals.mapper.custom.PersonMapper;
 import vinilab.springFundamentals.model.Person;
 import vinilab.springFundamentals.repositories.PersonRepository;
 
@@ -22,6 +23,9 @@ public class PersonServices {
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    PersonMapper converter;
 
     public PersonDTO findById(Long id){
         logger.info("Finding one Person!");
@@ -42,7 +46,7 @@ public class PersonServices {
     public PersonDTOV2 createV2(PersonDTOV2 person){
         logger.info("Creating one person");
         Person entity = parseObject(person, Person.class);
-        return parseObject(personRepository.save(entity), PersonDTO.class);
+        return converter.convertEntityToDTO(personRepository.save(entity));
     }
     public PersonDTO update(PersonDTO person){
         logger.info("updating one person!");
