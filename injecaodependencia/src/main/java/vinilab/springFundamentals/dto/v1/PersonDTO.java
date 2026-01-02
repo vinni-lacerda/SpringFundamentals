@@ -1,5 +1,8 @@
 package vinilab.springFundamentals.dto.v1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -7,6 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "person")
+@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
 public class PersonDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -15,11 +19,14 @@ public class PersonDTO implements Serializable {
     private Long id;
 
     @Column(name = "first_name", nullable = false, length = 80)
+    @JsonProperty("first_name")
     private String firstName;
     @Column(name = "last_name", nullable = false, length = 80)
+    @JsonProperty("last_name")
     private String lastName;
     @Column(nullable = false, length = 100)
     private String address;
+    @JsonIgnore
     @Column(nullable = false, length = 6)
     private String gender;
 
